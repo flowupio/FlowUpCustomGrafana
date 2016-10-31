@@ -76,7 +76,7 @@ $page-gradient: linear-gradient(60deg, transparent 70%, darken($page-bg, 4%) 98%
 // -------------------------
 $link-color:             $gray-1;
 $link-color-disabled:    lighten($link-color, 30%);
-$link-hover-color:       darken($link-color, 20%);
+$link-hover-color:       $pink;
 $external-link-color:    $pink;
 
 // Typography
