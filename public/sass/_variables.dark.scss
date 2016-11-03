@@ -95,13 +95,9 @@ $component-active-bg:    $brand-primary !default;
 
 // Panel
 // -------------------------
-<<<<<<< HEAD
-$panel-bg: 				 $dark-2;
-$panel-border: 			 solid 1px $dark-3;
-=======
+
 $panel-bg: 				 $startup-1;
-$panel-border:  	 solid 0px $startup-1;
->>>>>>> b8e48da... Dark theme configured with the branding color
+$panel-border:  	     solid 0px $startup-1;
 
 $divider-border-color:  #555;
 
@@ -174,12 +170,10 @@ $input-box-shadow:               inset 1px 0px 0.3rem 0px rgba(150, 150, 150, 0.
 $input-border-focus:             $pink !default;
 $input-box-shadow-focus:         $pink !default;
 $input-color-placeholder:        $gray-1 !default;
-<<<<<<< HEAD
-$input-label-bg:				         $dark-3;
-=======
+
 $input-label-bg:				 $dark-3;
 $input-invalid-border-color:     lighten($red, 5%);
->>>>>>> b8e48da... Dark theme configured with the branding color
+
 
 // Search
 $search-shadow: 0 0 35px 0 $body-bg;
