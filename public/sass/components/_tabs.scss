@@ -61,7 +61,7 @@
   &.active:hover,
   &.active:focus {
     @include border-radius(3px);
-    border-color: rgba(216, 131, 40, 0.77);
+    border-color: rgba(255, 25, 110, 0.77);
     border-bottom: 2px solid $panel-bg;
     color: $link-color;
     position: relative;
