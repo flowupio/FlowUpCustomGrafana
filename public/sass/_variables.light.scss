@@ -19,10 +19,12 @@ $dark-3:           #292929;
 $dark-4:           #373737;
 $dark-5:           #444444;
 $gray-1:           #555555;
+$gray-1-1:         #595959;
 $gray-2:           #7B7B7B;
 $gray-3:           #b3b3b3;
 $gray-4:           #D8D9DA;
 $gray-5:           #ECECEC;
+$gray-5-5:         #f4f4f4;
 $gray-6:           #f4f5f8;
 $gray-7:           #fbfbfb;
 
@@ -36,11 +38,11 @@ $green:                 #28B62C;
 $red:                   #FF4136;
 $yellow:                #FF851B;
 $orange:                #Ff7941;
-$pink:                  #E671B8;
+$pink:                  #FF196E;
 $purple:                #9954BB;
 $variable:              #2AB2E4;
 
-$brand-primary:         $orange;
+$brand-primary:         $pink;
 $brand-success:         $green;
 $brand-warning:         $orange;
 $brand-danger:          $red;
@@ -54,11 +56,11 @@ $critical:              #EC2128;
 // Scaffolding
 // -------------------------
 
-$body-bg:  		  		    $white;
-$page-bg:  		  		    $white;
-$body-color:    		    $gray-1;
-$text-color:    		    $gray-1;
-$text-color-strong:	    $white;
+$body-bg:               $gray-5-5;
+$page-bg:               $gray-5-5;
+$body-color:            $gray-1-1;
+$text-color:            $gray-1-1;
+$text-color-strong:     $gray-1-1;
 $text-color-weak: 	    $gray-3;
 $text-color-faint:      $gray-4;
 $text-color-emphasis: 	$dark-5;
@@ -67,15 +69,15 @@ $text-shadow-strong: none;
 $text-shadow-faint: none;
 
 // gradients
-$brand-gradient: linear-gradient(to right, rgba(255,213,0,1.0) 0%, rgba(255,68,0,1.0) 99%, rgba(255,68,0,1.0) 100%);
+$brand-gradient: linear-gradient(to right, rgba(255,255,255,1.0) 0%, rgba(255,25,110,1.0) 99%, rgba(255,25,110,1.0) 100%);
 $page-gradient: linear-gradient(60deg, transparent 70%, darken($page-bg, 4%) 98%);
 
 // Links
 // -------------------------
 $link-color:             $gray-1;
 $link-color-disabled:    lighten($link-color, 30%);
-$link-hover-color:       darken($link-color, 20%);
-$external-link-color:    $blue;
+$link-hover-color:       $pink;
+$external-link-color:    $pink;
 
 // Typography
 // -------------------------
@@ -95,14 +97,14 @@ $component-active-bg:    $brand-primary !default;
 // Panel
 // -------------------------
 
-$panel-bg: 		  $gray-7;
-$panel-border:  solid 1px $gray-6;
+$panel-bg: 		  $white;
+$panel-border:  solid 0px $white;
 
 $divider-border-color:	      $gray-2;
 
 // Graphite Target Editor
-$tight-form-border:   $gray-4;
-$tight-form-bg:    		$gray-6;
+$tight-form-border:           $gray-6;
+$tight-form-bg:               $gray-7;
 
 $tight-form-func-bg:            $gray-5;
 $tight-form-func-highlight-bg:  $gray-6;
@@ -138,11 +140,11 @@ $scrollbarBorder:       $gray-4;
 $btn-primary-bg:        $brand-primary;
 $btn-primary-bg-hl:     lighten($brand-primary, 8%);
 
-$btn-secondary-bg:      $blue-dark;
-$btn-secondary-bg-hl:   lighten($blue-dark, 4%);
+$btn-secondary-bg:      $pink;
+$btn-secondary-bg-hl:   lighten($pink, 4%);
 
-$btn-success-bg:        lighten($green, 3%);
-$btn-success-bg-hl:     darken($green, 3%);
+$btn-success-bg:        lighten($pink, 3%);
+$btn-success-bg-hl:     darken($pink, 3%);
 
 $btn-warning-bg:        lighten($orange, 3%);
 $btn-warning-bg-hl:     darken($orange, 3%);
@@ -170,15 +172,16 @@ $input-bg-disabled:              $gray-5;
 $input-color:                    $dark-3;
 $input-border-color:             $gray-5;
 $input-box-shadow:               none;
-$input-border-focus:             $blue !default;
-$input-box-shadow-focus:         $blue !default;
+$input-border-focus:             $pink !default;
+$input-box-shadow-focus:         $pink !default;
 $input-color-placeholder:        $gray-4 !default;
-$input-label-bg:	        	     $gray-6;
+$input-label-bg:	        	 $white;
+$input-label-text-color:         $pink;
 $input-invalid-border-color:     lighten($red, 5%);
 
 // Sidemenu
 // -------------------------
-$side-menu-bg:            $body-bg;
+$side-menu-bg:            $white;
 $side-menu-item-hover-bg: $gray-6;
 $side-menu-opacity:		  0.97;
 
@@ -231,7 +234,7 @@ $wellBackground:                  $gray-3;
 
 $navbarHeight:                    52px;
 $navbarBackgroundHighlight:       #f8f8f8;
-$navbarBackground:                #f8f8f8;
+$navbarBackground:                $white;
 $navbarBorder:                    1px solid $tight-form-border;
 
 $navbarText:                      #666;
@@ -252,13 +255,13 @@ $navbarButtonBackgroundHighlight: lighten($navbarBackground, 5%);
 // -------------------------
 $paginationBackground:                $gray-2;
 $paginationBorder:                    transparent;
-$paginationActiveBackground:          $blue;
+$paginationActiveBackground:          $pink;
 
 
 // Form states and alerts
 // -------------------------
-$state-warning-text:             lighten($orange, 10%);
-$state-warning-bg:       $orange;
+$state-warning-text:      lighten($pink, 10%);
+$state-warning-bg:        $orange;
 $warningBorder:           transparent;
 
 $errorText:               lighten($red, 10%);
@@ -269,15 +272,15 @@ $successText:             lighten($green, 10%);
 $successBackground:       $green;
 $successBorder:           transparent;
 
-$infoText:                $blue;
-$infoBackground:          $blue-dark;
+$infoText:                $pink;
+$infoBackground:          $pink;
 $infoBorder:              transparent;
 
 // popover
 $popover-bg:              $gray-5;
 $popover-color:           $text-color;
 
-$popover-help-bg:         $blue-dark;
+$popover-help-bg:         $pink;
 $popover-help-color:      $gray-6;
 
 // Tooltips and popovers
