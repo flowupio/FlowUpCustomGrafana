@@ -4,10 +4,10 @@
     "company": "Coding Instinct AB"
   },
   "name": "grafana",
-  "version": "3.1.1",
+  "version": "3.2.1",
   "repository": {
     "type": "git",
-    "url": "http://github.com/grafana/grafana.git"
+    "url": "http://github.com/Karumi/FlowUpCustomGrafana.git"
   },
   "devDependencies": {
     "zone.js": "^0.6.6",
