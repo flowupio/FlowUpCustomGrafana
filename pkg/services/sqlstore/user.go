@@ -308,7 +308,7 @@ func GetSignedInUser(query *m.GetSignedInUserQuery) error {
 
 	if user.OrgRole == "" {
 		user.OrgId = -1
-		user.OrgName = "Org missing"
+		user.OrgName = "Waiting for application data"
 	}
 
 	query.Result = &user
