@@ -40,7 +40,7 @@
                 {
                   "type": "avg",
                   "id": "1",
-                  "field": "FramesPerSecond.p10",
+                  "field": "FramesPerSecond.p90",
                   "settings": {},
                   "meta": {}
                 }
