@@ -146,7 +146,7 @@ func setIndexViewData(c *middleware.Context) (*dtos.IndexViewData, error) {
 			Url:  setting.AppSubUrl + "/admin",
 			Children: []*dtos.NavLink{
 				{Text: "Global Users", Url: setting.AppSubUrl + "/admin/users"},
-				{Text: "Global Orgs", Url: setting.AppSubUrl + "/admin/orgs"},
+				{Text: "Global Apps", Url: setting.AppSubUrl + "/admin/orgs"},
 				{Text: "Server Settings", Url: setting.AppSubUrl + "/admin/settings"},
 				{Text: "Server Stats", Url: setting.AppSubUrl + "/admin/stats"},
 			},

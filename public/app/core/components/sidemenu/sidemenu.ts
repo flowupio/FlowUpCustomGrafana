@@ -80,7 +80,7 @@ export class SideMenuCtrl {
      });
 
      if (config.allowOrgCreate) {
-       this.orgMenu.push({text: "New organization", icon: "fa fa-fw fa-plus", url: this.getUrl('/org/new')});
+       this.orgMenu.push({text: "New application", icon: "fa fa-fw fa-plus", url: this.getUrl('/org/new')});
      }
    });
  }
