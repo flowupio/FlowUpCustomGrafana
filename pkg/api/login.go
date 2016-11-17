@@ -31,7 +31,7 @@ func LoginView(c *middleware.Context) {
 	viewData.Settings["loginHint"] = setting.LoginHint
 
 	if !tryLoginUsingRememberCookie(c) {
-		c.HTML(200, VIEW_INDEX, viewData)
+    c.Redirect(setting.RedirectLoginUrl)
 		return
 	}
 

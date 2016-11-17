@@ -142,8 +142,11 @@ var (
 	// logger
 	logger log.Logger
 
-	// Grafana.NET URL
-	GrafanaNetUrl string
+  // Grafana.NET URL
+  GrafanaNetUrl string
+
+  // Grafana.NET URL
+  RedirectLoginUrl string
 )
 
 type CommandLineArgs struct {
@@ -525,7 +528,9 @@ func NewConfigContext(args *CommandLineArgs) error {
 
 	GrafanaNetUrl = Cfg.Section("grafana.net").Key("url").MustString("https://grafana.net")
 
-	return nil
+  RedirectLoginUrl = Cfg.Section("auth.delegate").Key("url").MustString("http://app.flowup.io/login")
+
+  return nil
 }
 
 func readSessionConfig() {
