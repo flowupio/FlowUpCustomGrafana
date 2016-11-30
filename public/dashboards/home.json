@@ -65,7 +65,7 @@
           "links": [],
           "datasource": null,
           "maxDataPoints": 100,
-          "interval": "4m",
+          "interval": "5m",
           "cacheTimeout": null,
           "format": "none",
           "prefix": "",
@@ -200,7 +200,7 @@
           "aliasColors": {},
           "seriesOverrides": [],
           "links": [],
-          "interval": "4m"
+          "interval": "5m"
         },
         {
           "title": "Average Network Traffic",
@@ -326,7 +326,7 @@
           "aliasColors": {},
           "seriesOverrides": [],
           "links": [],
-          "interval": "4m"
+          "interval": "5m"
         },
         {
           "title": "Average Disk Usage",
@@ -452,7 +452,7 @@
           "aliasColors": {},
           "seriesOverrides": [],
           "links": [],
-          "interval": "4m"
+          "interval": "5m"
         }
       ],
       "title": "Dashboards"
