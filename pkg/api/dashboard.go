@@ -177,7 +177,13 @@ func GetHomeDashboard(c *middleware.Context) Response {
 		}
 	}
 
-	filePath := path.Join(setting.StaticRootPath, "dashboards/home.json")
+	targetPlatform := os.Getenv("GF_TARGET_PLATFORM")
+	homeFileName := "dashboards/home.json"
+	if targetPlatform == "IOS" {
+		homeFileName := "dashboards/home_ios.json"
+	}
+
+	filePath := path.Join(setting.StaticRootPath, homeFileName)
 	file, err := os.Open(filePath)
 	if err != nil {
 		return ApiError(500, "Failed to load home dashboard", err)
