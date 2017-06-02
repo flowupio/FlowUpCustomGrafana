@@ -180,7 +180,7 @@ func GetHomeDashboard(c *middleware.Context) Response {
 	targetPlatform := os.Getenv("GF_TARGET_PLATFORM")
 	homeFileName := "dashboards/home.json"
 	if targetPlatform == "IOS" {
-		homeFileName := "dashboards/home_ios.json"
+		homeFileName = "dashboards/home_ios.json"
 	}
 
 	filePath := path.Join(setting.StaticRootPath, homeFileName)
