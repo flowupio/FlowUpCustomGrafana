@@ -52,7 +52,7 @@ func searchHandler(query *Query) error {
 
 	hits = append(hits, dashQuery.Result...)
 
-	if jsonDashIndex != nil {
+	if jsonDashIndex != nil && hits.Len() == 0 {
 		jsonHits, err := jsonDashIndex.Search(query)
 		if err != nil {
 			return err
