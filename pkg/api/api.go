@@ -21,7 +21,7 @@ func Register(r *macaron.Macaron) {
 
 	// not logged in views
 	r.Get("/", reqSignedIn, Index)
-  r.Get("/logout", Logout)
+	r.Get("/logout", Logout)
 	r.Post("/login", quota("session"), bind(dtos.LoginCommand{}), wrap(LoginPost))
 	r.Get("/login/:name", quota("session"), OAuthLogin)
 	r.Get("/login", LoginView)
@@ -181,6 +181,7 @@ func Register(r *macaron.Macaron) {
 		// Preferences
 		r.Group("/preferences", func() {
 			r.Post("/set-home-dash", bind(m.SavePreferencesCommand{}), wrap(SetHomeDashboard))
+			r.Put("/update-home-dash", bind(m.UpdateHomeDashboardCmd{}), wrap(UpdateHomeDashboard))
 		})
 
 		// Data sources
