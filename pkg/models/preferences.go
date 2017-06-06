@@ -51,9 +51,3 @@ type SavePreferencesCommand struct {
 	Timezone        string `json:"timezone"`
 	Theme           string `json:"theme"`
 }
-
-type UpdateHomeDashboardCmd struct {
-	UserId          int64 `json:"userId"`
-	OrgId           int64 `json:"orgId"`
-	HomeDashboardId int64 `json:"homeDashboardId"`
-}

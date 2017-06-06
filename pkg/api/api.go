@@ -181,7 +181,6 @@ func Register(r *macaron.Macaron) {
 		// Preferences
 		r.Group("/preferences", func() {
 			r.Post("/set-home-dash", bind(m.SavePreferencesCommand{}), wrap(SetHomeDashboard))
-			r.Put("/update-home-dash", bind(m.UpdateHomeDashboardCmd{}), wrap(UpdateHomeDashboard))
 		})
 
 		// Data sources

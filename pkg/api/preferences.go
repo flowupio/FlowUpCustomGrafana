@@ -41,20 +41,20 @@ func getPreferencesFor(orgId int64, userId int64) Response {
 	return Json(200, &dto)
 }
 
-// PUT /api/user/preferences/update-home-dashboard
-func UpdateHomeDashboard(c *middleware.Context, dtoCmd m.UpdateHomeDashboardCmd) Response {
-	dto := dtos.UpdatePrefsCmd{
-		Theme:           "",
-		HomeDashboardId: dtoCmd.HomeDashboardId,
-		Timezone:        "",
-	}
-
-	return updatePreferencesFor(dtoCmd.OrgId, dtoCmd.UserId, &dto)
-}
-
 // PUT /api/user/preferences
 func UpdateUserPreferences(c *middleware.Context, dtoCmd dtos.UpdatePrefsCmd) Response {
-	return updatePreferencesFor(c.OrgId, c.UserId, &dtoCmd)
+	orgID := c.OrgId
+	userID := c.UserId
+
+	if dtoCmd.OrgId != 0 {
+		orgID = dtoCmd.OrgId
+	}
+
+	if dtoCmd.UserId != 0 {
+		userID = dtoCmd.UserId
+	}
+
+	return updatePreferencesFor(orgID, userID, &dtoCmd)
 }
 
 func updatePreferencesFor(orgId int64, userId int64, dtoCmd *dtos.UpdatePrefsCmd) Response {
