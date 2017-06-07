@@ -81,7 +81,7 @@ func SaveDashboard(cmd *m.SaveDashboardCommand) error {
 		}
 
 		if affectedRows == 0 {
-			return m.ErrDashboardVersionMismatch
+			return m.ErrDashboardNotFound
 		}
 
 		// delete existing tabs
