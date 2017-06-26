@@ -111,7 +111,9 @@ func DeleteDashboard(c *middleware.Context) {
 }
 
 func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
-	cmd.OrgId = c.OrgId
+	if cmd.OrgId == 0 {
+		cmd.OrgId = c.OrgId
+	}
 
 	if !c.IsSignedIn {
 		cmd.UserId = -1
