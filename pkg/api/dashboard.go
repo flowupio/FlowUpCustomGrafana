@@ -112,7 +112,7 @@ func DeleteDashboard(c *middleware.Context) {
 }
 
 func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
-	c.Logger.Error("Posting dashboard: %d, %d", c.OrgId, cmd.OrgId)
+	c.Logger.Error("Posting dashboard", "contextOrgId", c.OrgId, "commandOrgId", cmd.OrgId)
 
 	if cmd.OrgId == 0 {
 		cmd.OrgId = c.OrgId
@@ -135,6 +135,7 @@ func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
 		}
 	}
 
+	c.Logger.Error("Posting dashboard DISPATCH", "contextOrgId", c.OrgId, "commandOrgId", cmd.OrgId)
 	err := bus.Dispatch(&cmd)
 	if err != nil {
 		if err == m.ErrDashboardWithSameNameExists {
