@@ -111,6 +111,9 @@ func DeleteDashboard(c *middleware.Context) {
 }
 
 func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
+	commandOrgID := cmd.OrgId
+	contextOrgID := c.OrgId
+
 	if cmd.OrgId == 0 {
 		cmd.OrgId = c.OrgId
 	}
@@ -155,7 +158,7 @@ func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
 	}
 
 	c.TimeRequest(metrics.M_Api_Dashboard_Save)
-	return Json(200, util.DynMap{"status": "success", "slug": cmd.Result.Slug, "version": cmd.Result.Version})
+	return Json(200, util.DynMap{"status": "success", "slug": cmd.Result.Slug, "version": cmd.Result.Version, "commandOrgId": commandOrgID, "contextOrgId": contextOrgID})
 }
 
 func canEditDashboard(role m.RoleType) bool {
