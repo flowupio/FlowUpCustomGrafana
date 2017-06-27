@@ -32,7 +32,6 @@ func isDashboardStarredByUser(c *middleware.Context, dashId int64) (bool, error)
 }
 
 func GetDashboard(c *middleware.Context) {
-	c.Logger.Error("Getting dashboard")
 	slug := strings.ToLower(c.Params(":slug"))
 
 	query := m.GetDashboardQuery{Slug: slug, OrgId: c.OrgId}
@@ -112,8 +111,6 @@ func DeleteDashboard(c *middleware.Context) {
 }
 
 func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
-	c.Logger.Error("Posting dashboard", "contextOrgId", c.OrgId, "commandOrgId", cmd.OrgId)
-
 	if cmd.OrgId == 0 {
 		cmd.OrgId = c.OrgId
 	}
@@ -135,7 +132,6 @@ func PostDashboard(c *middleware.Context, cmd m.SaveDashboardCommand) Response {
 		}
 	}
 
-	c.Logger.Error("Posting dashboard DISPATCH", "contextOrgId", c.OrgId, "commandOrgId", cmd.OrgId)
 	err := bus.Dispatch(&cmd)
 	if err != nil {
 		if err == m.ErrDashboardWithSameNameExists {
