@@ -127,7 +127,7 @@ func (dash *Dashboard) UpdateSlug() {
 type SaveDashboardCommand struct {
 	Dashboard *simplejson.Json `json:"dashboard" binding:"Required"`
 	UserId    int64            `json:"userId"`
-	OrgId     int64            `json:"-"`
+	OrgId     int64            `json:"orgId"`
 	Overwrite bool             `json:"overwrite"`
 	PluginId  string           `json:"-"`
 

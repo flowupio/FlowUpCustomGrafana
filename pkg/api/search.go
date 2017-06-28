@@ -15,6 +15,18 @@ func Search(c *middleware.Context) {
 	tags := c.QueryStrings("tag")
 	starred := c.Query("starred")
 	limit := c.QueryInt("limit")
+	orgID := c.OrgId
+	userID := c.UserId
+
+	queryOrgID := c.QueryInt64("orgId")
+	if queryOrgID > 0 && c.OrgRole == m.ROLE_ADMIN {
+		orgID = queryOrgID
+	}
+
+	queryUserID := c.QueryInt64("userId")
+	if queryUserID > 0 && c.OrgRole == m.ROLE_ADMIN {
+		userID = queryUserID
+	}
 
 	if limit == 0 {
 		limit = 1000
@@ -31,10 +43,10 @@ func Search(c *middleware.Context) {
 	searchQuery := search.Query{
 		Title:        query,
 		Tags:         tags,
-		UserId:       c.UserId,
+		UserId:       userID,
 		Limit:        limit,
 		IsStarred:    starred == "true",
-		OrgId:        c.OrgId,
+		OrgId:        orgID,
 		DashboardIds: dbids,
 	}
 
@@ -44,7 +56,7 @@ func Search(c *middleware.Context) {
 		return
 	}
 
-	prefsQuery := m.GetPreferencesWithDefaultsQuery{OrgId: c.OrgId, UserId: c.UserId}
+	prefsQuery := m.GetPreferencesWithDefaultsQuery{OrgId: orgID, UserId: userID}
 	if err := bus.Dispatch(&prefsQuery); err != nil {
 		c.JsonApiErr(500, "Failed to get preferences", err)
 	}
