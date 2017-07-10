@@ -7,6 +7,8 @@ import (
 	m "github.com/grafana/grafana/pkg/models"
 
 	"github.com/go-xorm/xorm"
+	"github.com/grafana/grafana/pkg/components/simplejson"
+	"github.com/grafana/grafana/pkg/setting"
 )
 
 func init() {
@@ -23,7 +25,34 @@ func GetDataSourceById(query *m.GetDataSourceByIdQuery) error {
 	has, err := sess.Get(&query.Result)
 
 	if !has {
-		return m.ErrDataSourceNotFound
+		if setting.DefaultDataSourceEnabled {
+			jsonData, _ := simplejson.NewJson([]byte(`{}`))
+			jsonData.Set("esVersion", setting.DefaultDataSourceESVersion)
+			jsonData.Set("timeField", setting.DefaultDataSourceTimeField)
+
+			query.Result = m.DataSource{
+				OrgId:             query.OrgId,
+				Name:              "default",
+				Type:              m.DS_ES,
+				Access:            m.DS_ACCESS_PROXY,
+				Url:               setting.DefaultDataSourceUrl,
+				User:              "",
+				Password:          "",
+				Database:          setting.DefaultDataSourceDatabase,
+				IsDefault:         true,
+				BasicAuth:         false,
+				BasicAuthUser:     "",
+				BasicAuthPassword: "",
+				WithCredentials:   false,
+				JsonData:          jsonData,
+				Created:           time.Now(),
+				Updated:           time.Now(),
+			}
+
+			return nil
+		} else {
+			return m.ErrDataSourceNotFound
+		}
 	}
 	return err
 }
@@ -42,7 +71,38 @@ func GetDataSources(query *m.GetDataSourcesQuery) error {
 	sess := x.Limit(100, 0).Where("org_id=?", query.OrgId).Asc("name")
 
 	query.Result = make([]*m.DataSource, 0)
-	return sess.Find(&query.Result)
+	result := sess.Find(&query.Result)
+
+	if len(query.Result) == 0 && setting.DefaultDataSourceEnabled {
+		jsonData, _ := simplejson.NewJson([]byte(`{}`))
+		jsonData.Set("esVersion", setting.DefaultDataSourceESVersion)
+		jsonData.Set("timeField", setting.DefaultDataSourceTimeField)
+
+		defaultDs := m.DataSource{
+			OrgId:             query.OrgId,
+			Name:              "default",
+			Type:              m.DS_ES,
+			Access:            m.DS_ACCESS_PROXY,
+			Url:               "/api/datasources/proxy/1",
+			User:              "",
+			Password:          "",
+			Database:          setting.DefaultDataSourceDatabase,
+			IsDefault:         true,
+			BasicAuth:         false,
+			BasicAuthUser:     "",
+			BasicAuthPassword: "",
+			WithCredentials:   false,
+			JsonData:          jsonData,
+			Created:           time.Now(),
+			Updated:           time.Now(),
+		}
+
+		query.Result = append(query.Result, &defaultDs)
+
+		return nil
+	}
+
+	return result
 }
 
 func DeleteDataSource(cmd *m.DeleteDataSourceCommand) error {

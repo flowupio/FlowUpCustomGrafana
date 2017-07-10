@@ -142,11 +142,18 @@ var (
 	// logger
 	logger log.Logger
 
-  // Grafana.NET URL
-  GrafanaNetUrl string
+	// Grafana.NET URL
+	GrafanaNetUrl string
 
-  // Grafana.NET URL
-  RedirectLoginUrl string
+	// Grafana.NET URL
+	RedirectLoginUrl string
+
+	// Data source
+	DefaultDataSourceEnabled   bool
+	DefaultDataSourceUrl       string
+	DefaultDataSourceDatabase  string
+	DefaultDataSourceESVersion string
+	DefaultDataSourceTimeField string
 )
 
 type CommandLineArgs struct {
@@ -528,9 +535,16 @@ func NewConfigContext(args *CommandLineArgs) error {
 
 	GrafanaNetUrl = Cfg.Section("grafana.net").Key("url").MustString("https://grafana.net")
 
-  RedirectLoginUrl = Cfg.Section("auth.delegate").Key("url").MustString("http://app.flowup.io/login")
+	RedirectLoginUrl = Cfg.Section("auth.delegate").Key("url").MustString("http://app.flowup.io/login")
 
-  return nil
+	datasource := Cfg.Section("datasource")
+	DefaultDataSourceEnabled = datasource.Key("enabled").MustBool(false)
+	DefaultDataSourceUrl = datasource.Key("url").MustString("http://localhost:9200")
+	DefaultDataSourceDatabase = datasource.Key("database").MustString("flowup-0")
+	DefaultDataSourceESVersion = datasource.Key("es_version").MustString("2")
+	DefaultDataSourceTimeField = datasource.Key("time_field").MustString("@timestamp")
+
+	return nil
 }
 
 func readSessionConfig() {
